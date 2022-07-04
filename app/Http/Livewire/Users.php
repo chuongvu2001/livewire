@@ -13,9 +13,11 @@ class Users extends Component
     public $password;
     public $search = '';
 
-    public function mount(){
+    public function mount()
+    {
         return view('list-user');
     }
+
     public function store()
     {
         $validates = $this->validate([

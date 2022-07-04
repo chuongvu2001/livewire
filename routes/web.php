@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Users;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,11 @@ Route::get('/', function () {
 //Route::get('/users', function (){
 //    return view('list-user');
 //});
-Route::get('/users', Users::class);
+Route::get('/users', Users::class)->name('users');
+//Google Login
+Route::get('/login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/laravel-socialite/public/login/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
