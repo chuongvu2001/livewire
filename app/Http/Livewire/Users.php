@@ -80,4 +80,10 @@ class Users extends Component
         $this->resetInputFields();
         $this->emit('userUpdated');
     }
+
+    public function delete($id)
+    {
+        $user = User::find($id)->delete();
+        session()->flash('message', 'User deleted Successfully ! ');
+    }
 }

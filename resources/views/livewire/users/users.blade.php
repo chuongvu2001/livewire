@@ -37,8 +37,12 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->email}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#editUserModal"
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#editUserModal"
                                             wire:click.prevent="edit({{$item->id}})">Edit
+                                    </button>
+                                    <button type="button" class="btn btn-danger"
+                                            wire:click.prevent="delete({{$item->id}})">Delete
                                     </button>
                                 </td>
                             </tr>
