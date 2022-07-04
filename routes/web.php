@@ -17,7 +17,7 @@ use App\Http\Livewire\Users;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/users', function (){
-    return view('list-user');
-});
-
+//Route::get('/users', function (){
+//    return view('list-user');
+//});
+Route::get('/users', Users::class);

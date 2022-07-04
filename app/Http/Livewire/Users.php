@@ -13,6 +13,9 @@ class Users extends Component
     public $password;
     public $search = '';
 
+    public function mount(){
+        return view('list-user');
+    }
     public function store()
     {
         $validates = $this->validate([
@@ -47,7 +50,7 @@ class Users extends Component
 
     public function search()
     {
-        return view('livewire.users', [
+        return view('livewire.users.users', [
             'users' => User::where('name', 'like', '%' . $this->search . '%')->get(),
         ]);
     }
