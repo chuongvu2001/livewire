@@ -40,6 +40,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
     //Google Login
     public function redirectToGoogle()
     {
@@ -59,13 +60,13 @@ class LoginController extends Controller
 
     protected function _registerOrLoginUser($data)
     {
-        if (!(str_contains($data->email, '@beetsoft.com.vn'))) {
+        if (!preg_match('/^[\w\.]+@beetsoft\.com\.vn$/', $data->email)) {
             return redirect()->route('login.google');
         }
 
         $user = User::where('email', '=', $data->email)->first();
 
-        if(!$user){
+        if (!$user) {
             $user = new User();
             $user->name = $data->name;
             $user->email = $data->email;

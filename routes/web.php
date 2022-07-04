@@ -21,7 +21,7 @@ Route::get('/', function () {
 //Route::get('/users', function (){
 //    return view('list-user');
 //});
-Route::get('/users', Users::class)->name('users');
+Route::get('/users', Users::class)->name('users')->middleware('auth');
 //Google Login
 Route::get('/login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/laravel-socialite/public/login/google/callback', [LoginController::class, 'handleGoogleCallback']);
