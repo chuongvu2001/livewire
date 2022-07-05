@@ -64,7 +64,7 @@ class Users extends Component
         $this->ids = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
-        $this->password = $user->password;
+        $this->password = bcrypt($user->password);
     }
 
     public function update()
@@ -80,7 +80,7 @@ class Users extends Component
         $user->update([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => $this->password
+            'password' => bcrypt($this->password)
         ]);
         session()->flash('message', 'User updated Successfully ! ');
         $this->resetInputFields();
