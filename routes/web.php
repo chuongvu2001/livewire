@@ -29,3 +29,6 @@ Route::get('/laravel-socialite/public/login/google/callback', [LoginController::
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('user-datatables', function () {
+    return view('welcome');
+});
